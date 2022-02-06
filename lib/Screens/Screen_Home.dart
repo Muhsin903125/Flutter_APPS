@@ -1,6 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:testapp3/Screens/Screen_login.dart';
+import 'package:testapp3/Screens/Screen_splash.dart';
 import 'package:testapp3/Screens/screen_profile.dart';
 
 class ScreenHome extends StatelessWidget {
@@ -8,13 +12,33 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //final _random = new Random();
-    var imagePath = [
-      'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?s=612x612'
-          'http://www.shadowsphotography.co/wp-content/uploads/2018/01/Priyanka-Balasubramanian-Siddhartha-100x100.jpg',
-      'http://www.shadowsphotography.co/wp-content/uploads/2018/01/Priyanka-Balasubramanian-Siddhartha-100x100.jpg',
-    ];
+    var imagePath =
+        'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?s=612x612';
     DateTime now = DateTime.now();
     return Scaffold(
+      appBar: AppBar(
+        // leading: Visibility(
+        //   visible: false,
+        //   child: Text("a"),
+        // ),
+        title: const Text('Home Page'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add_alert),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('This is a snackbar')));
+            },
+          ),
+          IconButton(
+              icon: const Icon(Icons.logout),
+              tooltip: 'Logout',
+              onPressed: () {
+                logout(context);
+              }),
+        ],
+      ),
       body: SafeArea(
         // child: Column(
         //   children: List.generate(
@@ -64,7 +88,7 @@ class ScreenHome extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
                     return ScreenProfile(
                       name: 'profile $index',
-                      profImage: imagePath[0],
+                      profImage: imagePath,
                     );
                   }));
                 },
@@ -74,7 +98,7 @@ class ScreenHome extends StatelessWidget {
                 leading: CircleAvatar(
                   // backgroundColor: Colors.green,
                   radius: 50,
-                  backgroundImage: NetworkImage(imagePath[0]),
+                  backgroundImage: NetworkImage(imagePath),
                 ),
                 trailing: Text(
                   '${now.hour}:${now.minute}',
@@ -90,5 +114,12 @@ class ScreenHome extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  logout(BuildContext context) async {
+    var sharedPfs = await SharedPreferences.getInstance();
+    await sharedPfs.clear();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (ctx) => ScreenLogin()), (Route) => false);
   }
 }

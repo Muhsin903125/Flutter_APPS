@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Screens/Screen_Home.dart';
+import 'Screens/Screen_splash.dart';
 
-void main(List<String> args) {
+void main() {
   runApp(Initail());
 }
 
@@ -14,7 +14,7 @@ class Initail extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.green,
       ),
-      home: ScreenHome(),
+      home: ScreenSplash(),
     );
   }
 }
