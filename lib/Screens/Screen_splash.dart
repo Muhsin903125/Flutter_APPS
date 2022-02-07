@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:testapp3/Screens/Nav_basebar.dart';
 import 'package:testapp3/Screens/Screen_Home.dart';
 import 'package:testapp3/Screens/Screen_login.dart';
 
@@ -63,7 +64,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
 
     if (savedValue != null) {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (ctx) => ScreenHome()), (route) => false);
+          MaterialPageRoute(builder: (ctx) => Nav_basebar()), (route) => false);
     } else {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (ctx) => ScreenLogin()), (route) => false);

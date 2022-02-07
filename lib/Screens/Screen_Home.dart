@@ -15,31 +15,32 @@ class ScreenHome extends StatelessWidget {
     var imagePath =
         'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?s=612x612';
     DateTime now = DateTime.now();
-    return Scaffold(
-      appBar: AppBar(
-        // leading: Visibility(
-        //   visible: false,
-        //   child: Text("a"),
-        // ),
-        title: const Text('Home Page'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('This is a snackbar')));
-            },
-          ),
-          IconButton(
-              icon: const Icon(Icons.logout),
-              tooltip: 'Logout',
-              onPressed: () {
-                logout(context);
-              }),
-        ],
-      ),
-      body: SafeArea(
+    return Container(
+      // appBar: AppBar(
+      //   // leading: Visibility(
+      //   //   visible: false,
+      //   //   child: Text("a"),
+      //   // ),
+      //   title: const Text('Home Page'),
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.add_alert),
+      //       tooltip: 'Show Snackbar',
+      //       onPressed: () {
+      //         ScaffoldMessenger.of(context).showSnackBar(
+      //             const SnackBar(content: Text('This is a snackbar')));
+      //       },
+      //     ),
+      //     IconButton(
+      //         icon: const Icon(Icons.logout),
+      //         tooltip: 'Logout',
+      //         onPressed: () {
+      //           logout(context);
+      //         }),
+      //   ],
+      // ),
+      // body:
+      child: SafeArea(
         // child: Column(
         //   children: List.generate(
         //     50,

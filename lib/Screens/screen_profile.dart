@@ -54,9 +54,50 @@ class ScreenProfile extends StatelessWidget {
               },
               child: Text('go back'),
             ),
+            ElevatedButton.icon(
+              onPressed: () {
+                showbottomsheet(context);
+              },
+              icon: Icon(Icons.arrow_circle_up),
+              label: Text("Open sheet"),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> showbottomsheet(BuildContext ctx) async {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (ctx1) {
+          return Container(
+            width: double.infinity,
+
+            height: (MediaQuery.of(ctx1).size.height / 3), //for screen size
+            color: Color.fromARGB(255, 113, 223, 195),
+            child: ListView(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(28.0),
+                  child: Text(
+                    "Text title",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.brown,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(height: 40),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(ctx1).pop();
+                    },
+                    child: Text("Close Pop")),
+              ],
+            ),
+          );
+        });
   }
 }
