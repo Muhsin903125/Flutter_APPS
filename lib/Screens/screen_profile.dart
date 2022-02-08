@@ -20,7 +20,7 @@ class ScreenProfile extends StatelessWidget {
             // Image.network(
             //  'http://www.shadowsphotography.co/wp-content/uploads/2017/12/photography-01-800x400.jpg'),
             Container(
-              height: 300,
+              height: (MediaQuery.of(context).size.height / 4),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
@@ -33,15 +33,18 @@ class ScreenProfile extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Image.network(
                       profImage,
+                      height: 100,
+                      width: 100,
                     ),
                     Text(
                       'Screen profile $name',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 15,
                           backgroundColor: Colors.black),
                     ),
                   ],
