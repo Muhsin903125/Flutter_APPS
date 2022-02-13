@@ -5,7 +5,7 @@ class MyColors {
   static Color white = Color(0xFFFFFFFF);
   static Color title = Color(0xDD000000);
   static Color subTitle = Color(0x8A000000);
-  static Color backgroundColor = Color(0xFFE0E0E0); //grey shade 300
+  static Color backgroundColor = Color(0xFFFFFFFF); //grey shade 300
   static Color shadow = Color.fromARGB(255, 99, 99, 99); //grey shade 300
 
   static Color favColor = Color(0xFFF44336); // red 500

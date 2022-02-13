@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp3/const/mycolors.dart';
 
 class MyStyles {
   static const buttonTextStyle = TextStyle(
@@ -25,4 +26,10 @@ class MyStyles {
     fontSize: 16.0,
     fontWeight: FontWeight.w600,
   );
+  static const cardMovieName = TextStyle(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w600,
+  );
+  static const cardReleaseDate =
+      TextStyle(fontSize: 10.0, color: Colors.black38);
 }

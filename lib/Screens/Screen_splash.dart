@@ -37,11 +37,10 @@ class _ScreenSplashState extends State<ScreenSplash> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: Image.network(
-                  "https://www.citypng.com/public/uploads/preview/-11595933110pkgm1trcyf.png",
-                  height: 120,
-                ),
-              ),
+                  child: Image(
+                image: AssetImage("assets/images/logoSplash.png"),
+                height: 150,
+              )),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 60, horizontal: 40),
@@ -57,7 +56,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
   }
 
   Future<void> CheckSaved() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 5));
 
     var sharedPfs = await SharedPreferences.getInstance();
     var savedValue = sharedPfs.getString("loginData");
