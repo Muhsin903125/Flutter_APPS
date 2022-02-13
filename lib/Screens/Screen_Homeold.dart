@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testapp3/Screens/Screen_login.dart';
 import 'package:testapp3/Screens/Screen_splash.dart';
 import 'package:testapp3/Screens/screen_profile.dart';
-import 'package:testapp3/const/myWidget.dart';
 import 'package:testapp3/const/mycolors.dart';
 import 'package:testapp3/const/myStyles.dart';
 
@@ -16,82 +15,88 @@ class ScreenHome extends StatelessWidget {
         'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?s=612x612';
     DateTime now = DateTime.now();
     return CustomScrollView(
+      physics: ClampingScrollPhysics(),
       slivers: <Widget>[
-        // const SliverAppBar(
-        //   pinned: true,
-        //   // snap: true,
-        //   // floating: true,
-        //   expandedHeight: 250.0,
-        //   flexibleSpace: FlexibleSpaceBar(
-        //     //title: Text('Demo'),
-        //     background: Image(
-        //       image: AssetImage("assets/images/BG1.jpg"),
-        //       fit: BoxFit.cover,
-        //     ),
-        //   ),
-        //   // bottom: Border.symmetric(50),
-        //   backgroundColor: Colors.transparent,
-        // ),
-        SliverToBoxAdapter(
-          child: Container(
-            decoration: BoxDecoration(
-              color: MyColors.backgroundColor,
-            ),
-            child: Column(
-              children: [
-                buildHeader(),
-                MyWidget.mainHeading("Latest Movies", "View All"),
-                Container(
-                  child: ListTile(
-                    leading: Icon(Icons.album),
-                    title: Text('The Enchanted Nightingale'),
-                    subtitle:
-                        Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-                  ),
-                ),
-                MyWidget.mainHeading("Upcomings", "View All"),
-              ],
-            ),
+        //  _buildHeader(),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          sliver: SliverToBoxAdapter(
+            child: null, // StatsGrid(),
           ),
         ),
-        SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-          return Container(
-            alignment: Alignment.center,
-            child: Text('Grid Item '),
-          );
-        }, childCount: 10)),
-        SliverGrid(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200.0,
-            mainAxisSpacing: 10.0,
-            crossAxisSpacing: 10.0,
-            childAspectRatio: 4.0,
+        SliverPadding(
+          padding: const EdgeInsets.only(top: 20.0),
+          sliver: SliverToBoxAdapter(
+            child: null, //CovidBarChart(covidCases: covidUSADailyNewCases),
           ),
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Container(
-                alignment: Alignment.center,
-                color: Colors.teal[100 * (index % 9)],
-                child: Text('Grid Item $index'),
-              );
-            },
-            childCount: 10,
-          ),
-        ),
-        SliverFixedExtentList(
-          itemExtent: 20.0,
-          delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
-            return Container(
-              alignment: Alignment.center,
-              color: Colors.lightBlue[100 * (index % 9)],
-              child: Text('List Item $index'),
-            );
-          }, childCount: 10),
         ),
       ],
     );
+
+    // appBar: AppBar(
+    //   // leading: Visibility(
+    //   //   visible: false,
+    //   //   child: Text("a"),
+    //   // ),
+    //   title: const Text('Home Page'),
+    //   actions: [
+    //     IconButton(
+    //       icon: const Icon(Icons.add_alert),
+    //       tooltip: 'Show Snackbar',
+    //       onPressed: () {
+    //         ScaffoldMessenger.of(context).showSnackBar(
+    //             const SnackBar(content: Text('This is a snackbar')));
+    //       },
+    //     ),
+    //     IconButton(
+    //         icon: const Icon(Icons.logout),
+    //         tooltip: 'Logout',
+    //         onPressed: () {
+    //           logout(context);
+    //         }),
+    //   ],
+    // ),
+    //     // body:
+    //     CustomScrollView(
+    //   physics: ClampingScrollPhysics(),
+    //   slivers: <Widget>[
+    //     // _buildHeader(),
+    //     ListView.separated(
+    //       itemBuilder: (ctx, index) {
+    //         return Padding(
+    //           padding: const EdgeInsets.symmetric(vertical: 2),
+    //           child: ListTile(
+    //             // onTap: () => print('pressed $index'),
+    //             onTap: () {
+    //               Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+    //                 return ScreenProfile(
+    //                   name: 'profile $index',
+    //                   profImage: imagePath,
+    //                 );
+    //               }));
+    //             },
+    //             //onLongPress: () => print(imagePath[2]),
+    //             title: Text('Text build ${index}'),
+    //             subtitle: Text('Text 2222222 $index'),
+    //             leading: CircleAvatar(
+    //               // backgroundColor: Colors.green,
+    //               radius: 50,
+    //               backgroundImage: NetworkImage(imagePath),
+    //             ),
+    //             trailing: Text(
+    //               '${now.hour}:${now.minute}',
+    //               style: TextStyle(color: Colors.green.shade800, fontSize: 8),
+    //             ),
+    //           ),
+    //         );
+    //       },
+    //       separatorBuilder: (ctx, index) => Divider(
+    //         height: 10,
+    //       ),
+    //       itemCount: 3,
+    //     ),
+    //   ],
+    // );
   }
 
   logout(BuildContext context) async {
@@ -100,6 +105,22 @@ class ScreenHome extends StatelessWidget {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (ctx) => ScreenLogin()), (Route) => false);
   }
+}
+
+SliverPadding _buildHeader1() {
+  return SliverPadding(
+    padding: const EdgeInsets.all(20.0),
+    sliver: SliverToBoxAdapter(
+      child: Text(
+        'Statistics',
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 25.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  );
 }
 
 buildHeader() {

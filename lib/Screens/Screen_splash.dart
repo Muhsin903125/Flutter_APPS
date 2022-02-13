@@ -57,7 +57,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
   }
 
   Future<void> CheckSaved() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 1));
 
     var sharedPfs = await SharedPreferences.getInstance();
     var savedValue = sharedPfs.getString("loginData");

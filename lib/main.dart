@@ -18,3 +18,17 @@ class Initail extends StatelessWidget {
     );
   }
 }
+
+// void _getdata() async {
+//   Map _countries = new Map();
+
+//   var url = "http://country.io/names.json";
+//   var res = await http.get(url);
+
+//   if (res.statusCode == 200) {
+//     setState() {
+//       _countries = JSON.decode(res.body);
+//       print("loaded ${_countries.length}");
+//     }
+//   }
+// }
