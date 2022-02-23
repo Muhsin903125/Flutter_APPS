@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:testapp3/googleRes/mapLocation.dart';
+import 'package:testapp3/main_old.dart';
 import 'Screens/Screen_splash.dart';
 
 void main() {
@@ -14,7 +16,7 @@ class Initail extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.green,
       ),
-      home: ScreenSplash(),
+      home: MyMapApp(),
     );
   }
 }

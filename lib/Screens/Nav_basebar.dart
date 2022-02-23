@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:testapp3/Screens/Screen_Home.dart';
 import 'package:testapp3/Screens/Screen_accounts.dart';
 import 'package:testapp3/Screens/Screen_search.dart';
+import 'package:testapp3/googleRes/mapLocation.dart';
+import 'package:testapp3/main2.dart';
 
 class Nav_basebar extends StatefulWidget {
   const Nav_basebar({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class Nav_basebar extends StatefulWidget {
 
 class _Nav_basebarState extends State<Nav_basebar> {
   int _currentIndex = 0;
-  final _pages = [ScreenHome(), ScreenSearch(), ScreenAccount()];
+  final _pages = [HomeScreen(), ScreenSearch(), ScreenAccount()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
